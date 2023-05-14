@@ -4,7 +4,7 @@ import json
 # loading client info
 file = open('config.json')
 info = json.load(file)
-config = info['client_id']
+config = info['token']
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -17,10 +17,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-        if message.author == client.user:
-            return
-        
-        if message.content.startswith('$hello'):
-            await message.channel.send('Hello!')
+    if message.author == client.user:
+        return
+    
+    if message.content.startswith('$hello'):
+        await message.channel.send('Hello!')
         
 client.run(config)
